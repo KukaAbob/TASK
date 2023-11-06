@@ -2,7 +2,7 @@ import re
 import werkzeug
 werkzeug.cached_property = werkzeug.utils.cached_property
 from robobrowser import RoboBrowser
-
+print('123')
 br = RoboBrowser()
 br.open('https://college.astanait.edu.kz/login/index.php')
 form = br.get_form()
