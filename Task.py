@@ -9,16 +9,45 @@ conn = psycopg2.connect(host = 'localhost',
                        password = '1234' )
 cur = conn.cursor()
 
+# cur.execute("SELECT username FROM ABOB32")
+# usernames = [r[0] for r in cur.fetchall()]
+# Found = False 
+# while not Found:
 cur.execute("SELECT username FROM ABOB32")
 usernames = [r[0] for r in cur.fetchall()]
-Found = False 
-while not Found:
-    username = input('Login:')
-    if username in usernames:
-        print('Welcome')
-        Found=True
-    else:
-        print('Enter valid login please')
+arr = usernames
+
+username = input('')
+
+def binary_search(arr, x):
+    global coefizhent
+    coefizhent = x
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (high + low) // 2
+
+        if arr[mid] < x:
+            low = mid + 1
+        elif arr[mid] > x:
+            high = mid - 1
+        else:
+            print(arr)
+            return mid
+
+    print("ba0b")
+    return -1
+
+result = binary_search(arr, username)
+if result != -1:
+    print(f"Имя пользователя {username} найдено в списке." , coefizhent)
+else:
+    print(f"Имя пользователя {username} не найдено в списке.")
+
+
+
+
 
 conn.commit()
 cur.close()
